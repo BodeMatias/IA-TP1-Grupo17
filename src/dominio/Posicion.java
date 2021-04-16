@@ -5,7 +5,7 @@ public class Posicion {
 	public Integer x;
 	public Integer y;
 	
-	public Posicion(Integer x, Integer y) {
+	public Posicion(Integer y, Integer x) {
 		this.x = x;
 		this.y = y;
 	}
@@ -27,7 +27,14 @@ public class Posicion {
 	}
 	
 	public Boolean equals(Posicion posicion) {
-		 return posicion.getX().equals(x) && posicion.getY().equals(y);
+		 return posicion.getX()==(x) && posicion.getY()==(y);
 	}
 
+	@Override
+	public String toString() {
+		String aux = "";
+		aux+="Fila: "+this.y+"\n";
+		aux+="Columna: "+this.x+"\n";
+		return aux;
+	}
 }

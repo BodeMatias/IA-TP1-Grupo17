@@ -7,7 +7,6 @@ public class ObjetivoCaperucita extends GoalTest {
 
 	@Override
 	public boolean isGoalState(AgentState agentState) {
-		// TODO Auto-generated method stub
 		EstadoCaperucita estadoCaperucita = (EstadoCaperucita) agentState;
 		
 		return estadoCaperucita.getVidas() > 0 && 

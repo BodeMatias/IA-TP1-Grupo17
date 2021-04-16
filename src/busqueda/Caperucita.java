@@ -41,13 +41,11 @@ public class Caperucita extends SearchBasedAgent{
 	
 	@Override
 	public void see(Perception p) {
-		// TODO Auto-generated method stub
 		this.getAgentState().updateState(p);
 	}
 
 	@Override
 	public Action selectAction() {
-		// TODO Auto-generated method stub
 		DepthFirstSearch estrategia = new DepthFirstSearch();
 		Search solucionadorBusqueda = new Search(estrategia);
 		solucionadorBusqueda.setVisibleTree(Search.EFAIA_TREE);

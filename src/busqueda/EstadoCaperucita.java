@@ -14,6 +14,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	private Posicion posicion_objetivo;
 	private Integer vidas;
 	private Integer[][] bosqueCaperucita;
+	//TODO borrar este atributo inutil
 	private ArrayList<Camino> caminos;
 	
 	public EstadoCaperucita() {
@@ -26,7 +27,6 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	public void setCantidadDeCaramelos(Integer cantidadDeCaramelos) {
 		this.cantidadDeCaramelos = cantidadDeCaramelos;
 	}
-	
 	public Posicion getPosicion() {
 		return posicion;
 	}
@@ -53,27 +53,90 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		//TODO definir cuando dos estados son iguales. Por ahora solo compara posiciones y cantidad de caramelos
+		EstadoCaperucita estadoComparado = (EstadoCaperucita) obj;
+		boolean mismaPosicion = estadoComparado.getPosicion().equals(this.posicion);
+		boolean mismaCantidadCaramelos = estadoComparado.getCantidadDeCaramelos()==(cantidadDeCaramelos);
+		return mismaCantidadCaramelos && mismaPosicion;
 	}
 	@Override
 	public SearchBasedAgentState clone() {
-		// TODO Auto-generated method stub
-		return null;
+		EstadoCaperucita nuevoEstado = new EstadoCaperucita();
+		//Los atributos de tipo primitivo se pasan por copia
+		nuevoEstado.setVidas(getVidas());
+		nuevoEstado.setCantidadDeCaramelos(getCantidadDeCaramelos());
+		//Los atributos que son objetos (incluidos arrays) se deben clonar a mano
+		nuevoEstado.setPosicion(new Posicion(this.posicion.getY(), this.posicion.getX()));
+		nuevoEstado.setPosicion_objetivo(new Posicion(this.posicion_objetivo.getY(), this.posicion_objetivo.getX()));
+		Integer[][] nuevoBosque = new Integer[9][14];
+		for(int i=0; i<9; i++) {
+			for(int j=0; j<14; j++) {
+				nuevoBosque[i][j]=this.bosqueCaperucita[i][j];
+			}
+		}
+		nuevoEstado.setBosqueCaperucita(nuevoBosque);
+		
+		return nuevoEstado;
 	}
 	@Override
 	public void updateState(Perception p) {
-		// TODO Auto-generated method stub
-		
+		ArrayList<ArrayList<Integer>> caminos = ((CaperucitaPercepcion)p).getCaminos();
+		int fila = this.posicion.getY();
+		int columna = this.posicion.getX();
+		//actualizo el camino superior
+		for(int i=0; i < caminos.get(0).size(); i++) {
+			if(caminos.get(0).get(i)==2) {
+				this.sacarLobo();
+			}
+			this.bosqueCaperucita[fila-i-1][columna] = caminos.get(0).get(i);
+		}
+		//actualizo el camino derecho
+		for(int i=0; i < caminos.get(1).size(); i++) {
+			if(caminos.get(1).get(i)==2) {
+				this.sacarLobo();
+			}
+			this.bosqueCaperucita[fila][columna+i+1] = caminos.get(1).get(i);
+		}
+		//actualizo el camino inferior
+		for(int i=0; i < caminos.get(2).size(); i++) {
+			if(caminos.get(2).get(i)==2) {
+				this.sacarLobo();
+			}
+			this.bosqueCaperucita[fila+i+1][columna] = caminos.get(2).get(i);
+		}
+		//actualizo el camino izquierdo
+		for(int i=0; i < caminos.get(3).size(); i++) {
+			if(caminos.get(3).get(i)==2) {
+				this.sacarLobo();
+			}
+			this.bosqueCaperucita[fila][columna-i-1] = caminos.get(3).get(i);
+		}
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String res = "";
+		
+		res+="Bosque caperucita: \n";
+		res+=MatrizBosque.imprimirMatriz(bosqueCaperucita);
+		res+="\n";
+		
+		res+="Posicion: \n";
+		res+=this.posicion.toString();
+		res+="\n";
+		
+		res+="Vidas: \n";
+		res+=this.vidas;
+		res+="\n";
+		
+		res+="Cantidad de Caramelos: \n";
+		res+=this.cantidadDeCaramelos;
+		res+="\n";
+		
+		return res;
 	}
 	@Override
 	public void initState() {
-		// TODO Auto-generated method stub
+		// TODO Hacer esto generico
 		this.bosqueCaperucita = MatrizBosque.bosque;
 		this.vidas = 3;
 		this.posicion = new Posicion(5, 11);
@@ -85,6 +148,15 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	}
 	public void setPosicion_objetivo(Posicion posicion_objetivo) {
 		this.posicion_objetivo = posicion_objetivo;
+	}
+	private void sacarLobo() {
+		for(int i = 0; i<9; i++) {
+			for(int j=0; j<14; j++) {
+				if(this.bosqueCaperucita[i][j]==2) {
+					this.bosqueCaperucita[i][j]=0;
+				}
+			}
+		}
 	}
 
 

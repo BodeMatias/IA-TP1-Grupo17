@@ -15,6 +15,7 @@ public class Main {
 		
 		SearchBasedAgentSimulator searchBasedAgentSimulator = new SearchBasedAgentSimulator(ambiente, agente);
 		
+		MatrizBosque.imprimirMatriz(MatrizBosque.bosque);
 		
 		searchBasedAgentSimulator.start();	
 	}
