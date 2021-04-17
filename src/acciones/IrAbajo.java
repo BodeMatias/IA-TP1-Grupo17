@@ -22,7 +22,7 @@ public class IrAbajo extends SearchAction{
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {
+		if(bosque[posicion.getFila()+1][posicion.getColumna()]==-1 || posicion.getFila()==8) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
@@ -33,6 +33,7 @@ public class IrAbajo extends SearchAction{
 			int i = 1;
 			do {
 				celda = bosque[fila+i][columna];
+				//System.out.println("Abajo:\nFila: "+(fila+i)+"\nColumna: "+columna+"\nCelda: "+celda);
 				switch(celda) {
 					case 1: {//junto caramelo, lo saco del bosque
 						bosque[fila+i][columna]=0;
@@ -40,13 +41,13 @@ public class IrAbajo extends SearchAction{
 						break;
 					}
 					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
-						nuevoEstado.initState();
+						//nuevoEstado.initState();
 						nuevoEstado.setVidas(vidas-1);
-						return nuevoEstado;
+						//return nuevoEstado;
 					}
 				}
 				i++;
-			}while(celda != -1);
+			}while(celda != -1 && fila+i-1!=8);
 			//termine de moverme, actualizo
 			bosque[posicion.getFila()][posicion.getColumna()]=0;
 			
