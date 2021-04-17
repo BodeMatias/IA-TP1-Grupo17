@@ -31,7 +31,7 @@ public class CaperucitaPercepcion extends Perception{
         Ambiente ambiente = (Ambiente) environment;
         EstadoAmbiente environmentState = (EstadoAmbiente) ambiente.getEnvironmentState();
         
-        Integer[][] bosque = environmentState.getBosqueAmbiente();
+        int[][] bosque = environmentState.getBosqueAmbiente();
         Posicion posicionCaperucita = environmentState.getPosicionCaperucita();
         //Obtener camino arriba
         int fila = posicionCaperucita.getFila();

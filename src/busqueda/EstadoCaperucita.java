@@ -13,7 +13,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	private Posicion posicion;
 	private Posicion posicion_objetivo;
 	private Integer vidas;
-	private Integer[][] bosqueCaperucita;
+	private int[][] bosqueCaperucita;
 	//TODO borrar este atributo inutil
 	private ArrayList<Camino> caminos;
 	
@@ -45,10 +45,10 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	public void setCaminos(ArrayList<Camino> caminos) {
 		this.caminos = caminos;
 	}
-	public Integer[][] getBosqueCaperucita() {
+	public int[][] getBosqueCaperucita() {
 		return bosqueCaperucita;
 	}
-	public void setBosqueCaperucita(Integer[][] bosqueCaperucita) {
+	public void setBosqueCaperucita(int[][] bosqueCaperucita) {
 		this.bosqueCaperucita = bosqueCaperucita;
 	}
 	@Override
@@ -68,7 +68,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		//Los atributos que son objetos (incluidos arrays) se deben clonar a mano
 		nuevoEstado.setPosicion(new Posicion(this.posicion.getFila(), this.posicion.getColumna()));
 		nuevoEstado.setPosicion_objetivo(new Posicion(this.posicion_objetivo.getFila(), this.posicion_objetivo.getColumna()));
-		Integer[][] nuevoBosque = new Integer[9][14];
+		int[][] nuevoBosque = new int[9][14];
 		for(int i=0; i<9; i++) {
 			for(int j=0; j<14; j++) {
 				nuevoBosque[i][j]=this.bosqueCaperucita[i][j];
@@ -137,7 +137,10 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	@Override
 	public void initState() {
 		// TODO Hacer esto generico
-		this.bosqueCaperucita = MatrizBosque.bosque.clone();
+		this.bosqueCaperucita = new int[9][14];
+		for(int i=0; i<9; i++) {
+			this.bosqueCaperucita[i]=MatrizBosque.bosque[i].clone();
+		}
 		this.vidas = 3;
 		this.posicion = new Posicion(5, 11);
 		this.posicion_objetivo = new Posicion(7, 7);

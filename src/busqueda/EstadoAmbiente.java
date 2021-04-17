@@ -8,7 +8,7 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class EstadoAmbiente extends EnvironmentState {
 
-	private Integer[][] bosqueAmbiente;
+	private int[][] bosqueAmbiente;
 	private Posicion posicionLobo;
 	private Posicion posicionCampoFlores;
 	private Posicion posicionCaperucita;
@@ -18,10 +18,10 @@ public class EstadoAmbiente extends EnvironmentState {
 		initState();
 	}
 	
-	public Integer[][] getBosqueAmbiente() {
+	public int[][] getBosqueAmbiente() {
 		return bosqueAmbiente;
 	}
-	public void setBosqueAmbiente(Integer[][] bosqueAmbiente) {
+	public void setBosqueAmbiente(int[][] bosqueAmbiente) {
 		this.bosqueAmbiente = bosqueAmbiente;
 	}
 	public Posicion getPosicionLobo() {
@@ -51,7 +51,10 @@ public class EstadoAmbiente extends EnvironmentState {
 	@Override
 	public void initState() {
 		// TODO Hacer esto generico
-		this.bosqueAmbiente = MatrizBosque.bosque.clone();
+		this.bosqueAmbiente = new int[9][14];
+		for(int i=0; i<9; i++) {
+			this.bosqueAmbiente[i]=MatrizBosque.bosque[i].clone();
+		}
 		this.posicionCaperucita = new Posicion(5, 11);
 		this.posicionCampoFlores = new Posicion(7, 7);
 		this.posicionLobo = new Posicion(6, 4);

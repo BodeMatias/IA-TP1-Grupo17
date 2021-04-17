@@ -23,7 +23,7 @@ public class Ambiente extends Environment{
 		
         CaperucitaPercepcion percepcion = new CaperucitaPercepcion();
         
-        Integer[][] bosque = ((EstadoAmbiente) this.environmentState).getBosqueAmbiente();
+        int[][] bosque = ((EstadoAmbiente) this.environmentState).getBosqueAmbiente();
         Posicion posicionCaperucita = ((EstadoAmbiente) this.environmentState).getPosicionCaperucita();
         
         //Obtener camino arriba

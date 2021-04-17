@@ -16,7 +16,7 @@ public class IrDerecha extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
-		Integer[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
 		Integer vidas = nuevoEstado.getVidas();
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
@@ -71,10 +71,10 @@ public class IrDerecha extends SearchAction{
 		EstadoAmbiente nuevoEstadoAm = (EstadoAmbiente) est;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) ast;
 		
-		Integer[][]bosqueAm = nuevoEstadoAm.getBosqueAmbiente();
+		int[][]bosqueAm = nuevoEstadoAm.getBosqueAmbiente();
 		ArrayList<Posicion> posCaramelos = nuevoEstadoAm.getPosicionCaramelos();
 		
-		Integer[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
 		Integer vidas = nuevoEstado.getVidas();
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
