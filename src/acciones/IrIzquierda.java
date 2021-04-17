@@ -22,13 +22,13 @@ public class IrIzquierda extends SearchAction{
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(bosque[posicion.getY()][posicion.getX()-1]==-1) {
+		if(bosque[posicion.getFila()][posicion.getColumna()-1]==-1) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
 		else {
-			int fila = posicion.getY();
-			int columna = posicion.getX();
+			int fila = posicion.getFila();
+			int columna = posicion.getColumna();
 			int celda;
 			int i = 1;
 			do {
@@ -48,12 +48,12 @@ public class IrIzquierda extends SearchAction{
 				i++;
 			}while(celda != -1);
 			//termine de moverme, actualizo
-			bosque[posicion.getY()][posicion.getX()]=0;
+			bosque[posicion.getFila()][posicion.getColumna()]=0;
 			
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
-			posicion.setX(columna-(i-2));
+			posicion.setColumna(columna-(i-2));
 			
-			bosque[posicion.getY()][posicion.getX()]=3;
+			bosque[posicion.getFila()][posicion.getColumna()]=3;
 			
 			nuevoEstado.setBosqueCaperucita(bosque);
 			nuevoEstado.setPosicion(posicion);
@@ -80,13 +80,13 @@ public class IrIzquierda extends SearchAction{
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(bosque[posicion.getY()][posicion.getX()-1]==-1) {
+		if(bosque[posicion.getFila()][posicion.getColumna()-1]==-1) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
 		else {
-			int fila = posicion.getY();
-			int columna = posicion.getX();
+			int fila = posicion.getFila();
+			int columna = posicion.getColumna();
 			int celda;
 			int i = 1;
 			do {
@@ -98,7 +98,7 @@ public class IrIzquierda extends SearchAction{
 						Iterator<Posicion> iterator = posCaramelos.iterator();
 						while(iterator.hasNext()) {
 							Posicion p = iterator.next();
-							if(p.getY()==fila && p.getX()==columna-i) {
+							if(p.getFila()==fila && p.getColumna()==columna-i) {
 								iterator.remove();
 								break;
 							}
@@ -116,20 +116,20 @@ public class IrIzquierda extends SearchAction{
 				i++;
 			}while(celda != -1);
 			//termine de moverme, actualizo
-			bosqueAm[posicion.getY()][posicion.getX()]=0;
-			bosque[posicion.getY()][posicion.getX()]=0;
+			bosqueAm[posicion.getFila()][posicion.getColumna()]=0;
+			bosque[posicion.getFila()][posicion.getColumna()]=0;
 			
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
 
-			posicion.setX(columna-(i-2));
+			posicion.setColumna(columna-(i-2));
 			
-			bosque[posicion.getY()][posicion.getX()]=3;
+			bosque[posicion.getFila()][posicion.getColumna()]=3;
 			
 			nuevoEstado.setBosqueCaperucita(bosque);
 			nuevoEstado.setPosicion(posicion);
 			
-			bosqueAm[posicion.getY()][posicion.getX()]=3;
-			nuevoEstadoAm.setPosicionCaperucita(new Posicion(nuevoEstado.getPosicion().getY(), nuevoEstado.getPosicion().getX()));
+			bosqueAm[posicion.getFila()][posicion.getColumna()]=3;
+			nuevoEstadoAm.setPosicionCaperucita(new Posicion(nuevoEstado.getPosicion().getFila(), nuevoEstado.getPosicion().getColumna()));
 			
 			nuevoEstadoAm.setBosqueAmbiente(bosqueAm);
 			nuevoEstadoAm.setPosicionCaramelos(posCaramelos);

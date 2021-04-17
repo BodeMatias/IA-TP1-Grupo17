@@ -2,39 +2,39 @@ package dominio;
 
 public class Posicion {
 	
-	public Integer x;
-	public Integer y;
+	public Integer columna;
+	public Integer fila;
 	
-	public Posicion(Integer y, Integer x) {
-		this.x = x;
-		this.y = y;
+	public Posicion(Integer fila, Integer columna) {
+		this.columna = columna;
+		this.fila = fila;
 	}
 
-	public Integer getX() {
-		return x;
+	public Integer getColumna() {
+		return columna;
 	}
 
-	public void setX(Integer x) {
-		this.x = x;
+	public void setColumna(Integer columna) {
+		this.columna = columna;
 	}
 
-	public Integer getY() {
-		return y;
+	public Integer getFila() {
+		return fila;
 	}
 
-	public void setY(Integer y) {
-		this.y = y;
+	public void setFila(Integer fila) {
+		this.fila = fila;
 	}
 	
 	public Boolean equals(Posicion posicion) {
-		 return posicion.getX()==(x) && posicion.getY()==(y);
+		 return posicion.getColumna()==(columna) && posicion.getFila()==(fila);
 	}
 
 	@Override
 	public String toString() {
 		String aux = "";
-		aux+="Fila: "+this.y+"\n";
-		aux+="Columna: "+this.x+"\n";
+		aux+="Fila: "+this.fila+"\n";
+		aux+="Columna: "+this.columna+"\n";
 		return aux;
 	}
 }

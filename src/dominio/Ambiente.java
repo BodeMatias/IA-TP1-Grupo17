@@ -27,30 +27,30 @@ public class Ambiente extends Environment{
         Posicion posicionCaperucita = ((EstadoAmbiente) this.environmentState).getPosicionCaperucita();
         
         //Obtener camino arriba
-        int fila = posicionCaperucita.getY();
-        int columna = posicionCaperucita.getX();
+        int fila = posicionCaperucita.getFila();
+        int columna = posicionCaperucita.getColumna();
         Integer celda;
         do {
         	celda = bosque[--fila][columna];
         	percepcion.getCaminos().get(0).add(celda);
         }while(celda!=-1);
         //Obtener camino derecha
-        fila = posicionCaperucita.getY();
-        columna = posicionCaperucita.getX();
+        fila = posicionCaperucita.getFila();
+        columna = posicionCaperucita.getColumna();
         do {
         	celda = bosque[fila][++columna];
         	percepcion.getCaminos().get(1).add(celda);
         }while(celda!=-1);
         //Obtener camino abajo
-        fila = posicionCaperucita.getY();
-        columna = posicionCaperucita.getX();
+        fila = posicionCaperucita.getFila();
+        columna = posicionCaperucita.getColumna();
         do {
         	celda = bosque[++fila][columna];
         	percepcion.getCaminos().get(2).add(celda);
         }while(celda!=-1);
         //Obtener camino izquierda
-        fila = posicionCaperucita.getY();
-        columna = posicionCaperucita.getX();
+        fila = posicionCaperucita.getFila();
+        columna = posicionCaperucita.getColumna();
         do {
         	celda = bosque[fila][--columna];
         	percepcion.getCaminos().get(3).add(celda);

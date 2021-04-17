@@ -66,8 +66,8 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		nuevoEstado.setVidas(getVidas());
 		nuevoEstado.setCantidadDeCaramelos(getCantidadDeCaramelos());
 		//Los atributos que son objetos (incluidos arrays) se deben clonar a mano
-		nuevoEstado.setPosicion(new Posicion(this.posicion.getY(), this.posicion.getX()));
-		nuevoEstado.setPosicion_objetivo(new Posicion(this.posicion_objetivo.getY(), this.posicion_objetivo.getX()));
+		nuevoEstado.setPosicion(new Posicion(this.posicion.getFila(), this.posicion.getColumna()));
+		nuevoEstado.setPosicion_objetivo(new Posicion(this.posicion_objetivo.getFila(), this.posicion_objetivo.getColumna()));
 		Integer[][] nuevoBosque = new Integer[9][14];
 		for(int i=0; i<9; i++) {
 			for(int j=0; j<14; j++) {
@@ -81,8 +81,8 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	@Override
 	public void updateState(Perception p) {
 		ArrayList<ArrayList<Integer>> caminos = ((CaperucitaPercepcion)p).getCaminos();
-		int fila = this.posicion.getY();
-		int columna = this.posicion.getX();
+		int fila = this.posicion.getFila();
+		int columna = this.posicion.getColumna();
 		//actualizo el camino superior
 		for(int i=0; i < caminos.get(0).size(); i++) {
 			if(caminos.get(0).get(i)==2) {
