@@ -137,11 +137,14 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	@Override
 	public void initState() {
 		// TODO Hacer esto generico
-		this.bosqueCaperucita = MatrizBosque.bosque;
+		this.bosqueCaperucita = MatrizBosque.bosque.clone();
 		this.vidas = 3;
 		this.posicion = new Posicion(5, 11);
 		this.posicion_objetivo = new Posicion(7, 7);
 		this.cantidadDeCaramelos = 0;
+		
+		this.sacarLobo();
+		
 	}
 	public Posicion getPosicion_objetivo() {
 		return posicion_objetivo;

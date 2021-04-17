@@ -29,9 +29,9 @@ public class Caperucita extends SearchBasedAgent{
 		Vector<SearchAction> operadores = new Vector<SearchAction>();
 		
 		operadores.add(new IrArriba());
-		operadores.add(new IrAbajo());
 		operadores.add(new IrIzquierda());
 		operadores.add(new IrDerecha());
+		operadores.add(new IrAbajo());
 		
 		Problem problema = new Problem(objetivo, estado, operadores);
 		

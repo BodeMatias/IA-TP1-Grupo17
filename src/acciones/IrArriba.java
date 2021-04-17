@@ -40,7 +40,7 @@ public class IrArriba extends SearchAction{
 						break;
 					}
 					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
-						nuevoEstado = new EstadoCaperucita();
+						nuevoEstado.initState();
 						nuevoEstado.setVidas(vidas-1);
 						return nuevoEstado;
 					}
@@ -107,9 +107,9 @@ public class IrArriba extends SearchAction{
 						break;
 					}
 					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
-						nuevoEstado = new EstadoCaperucita();
+						nuevoEstado.initState();
 						nuevoEstado.setVidas(vidas-1);
-						nuevoEstadoAm = new EstadoAmbiente();
+						nuevoEstadoAm.initState();
 						return nuevoEstadoAm;
 					}
 				}

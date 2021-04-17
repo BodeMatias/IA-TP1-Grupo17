@@ -51,7 +51,7 @@ public class EstadoAmbiente extends EnvironmentState {
 	@Override
 	public void initState() {
 		// TODO Hacer esto generico
-		this.bosqueAmbiente = MatrizBosque.bosque;
+		this.bosqueAmbiente = MatrizBosque.bosque.clone();
 		this.posicionCaperucita = new Posicion(5, 11);
 		this.posicionCampoFlores = new Posicion(7, 7);
 		this.posicionLobo = new Posicion(6, 4);
