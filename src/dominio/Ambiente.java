@@ -24,7 +24,7 @@ public class Ambiente extends Environment{
 
 	@Override
 	public Perception getPercept() {
-		
+		//El metodo obtiene la nueva posicion del lobo, luego llama al metodo dentro de EstadoAMbiente para efectivamente moverlo
 		moverLobo();
 		
         CaperucitaPercepcion percepcion = new CaperucitaPercepcion();
@@ -36,41 +36,57 @@ public class Ambiente extends Environment{
         int fila = posicionCaperucita.getFila();
         int columna = posicionCaperucita.getColumna();
         Integer celda;
+        //Si no estoy en el borde del mapa
         if(fila>0) {
+        	//"Avanzo" para ver que hay en esta direccion 
         	do {
         		celda = bosque[--fila][columna];
         		percepcion.getCaminos().get(0).add(celda);
-        	}while(celda!=-1 && fila>0);
+        	}
+        	//Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
+        	while(celda!=-1 && fila>0);
         }
         
         //Obtener camino derecha
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
+        //Si no estoy en el borde del mapa
         if(columna<13) {
+        	//"Avanzo" para ver que hay en esta direccion 
         	do {
         		celda = bosque[fila][++columna];
         		percepcion.getCaminos().get(1).add(celda);
-        	}while(celda!=-1 && columna<13);
+        	}
+            //Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
+        	while(celda!=-1 && columna<13);
         }
         
         //Obtener camino abajo
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
+        //Si no estoy en el borde del mapa
         if(fila<8) {
+        	//"Avanzo" para ver que hay en esta direccion 
         	do {
         		celda = bosque[++fila][columna];
         		percepcion.getCaminos().get(2).add(celda);
-        	}while(celda!=-1 && fila<8);
+        	}
+            //Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
+        	while(celda!=-1 && fila<8);
         }
         
         //Obtener camino izquierda
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
+        //Si no estoy en el borde del mapa
         if(columna>0) {
+        	//"Avanzo" para ver que hay en esta direccion 
         	do {
             	celda = bosque[fila][--columna];
             	percepcion.getCaminos().get(3).add(celda);
-            }while(celda!=-1 && columna>0);
+            }
+            //Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
+        	while(celda!=-1 && columna>0);
         }        
         
         // Return the perception
@@ -82,6 +98,7 @@ public class Ambiente extends Environment{
 	}
 	
 	//Este método indica bajo qué condición se considera que el agente ha fallado
+	//Nunca es invocado, no se donde se deberia invocar.
     public boolean agentFailed(AgentState as) {
     	//TODO Resolver como hacer esto
     	EstadoCaperucita estado = (EstadoCaperucita)as;
@@ -99,12 +116,12 @@ public class Ambiente extends Environment{
     private void moverLobo() {
     	int[][]bosque = ((EstadoAmbiente)this.environmentState).getBosqueAmbiente();
     	int fila, columna;
-    	//Bosco una posicion valida para el lobo (Celda vacia (Dulce y campo de flores cuentan como ocupadas) y al lado de al menos 1 arbol)
+    	//Bosco una posicion valida para el lobo (Celda vacia (Dulce, caperucita y campo de flores cuentan como ocupadas) y al lado de al menos 1 arbol)
     	do {
     		fila = ThreadLocalRandom.current().nextInt(1, 8);
     		columna = ThreadLocalRandom.current().nextInt(1, 13);
     	}while(!(bosque[fila][columna]==0 && (bosque[fila-1][columna]==-1 || bosque[fila+1][columna]==-1 || bosque[fila][columna-1]==-1 || bosque[fila][columna+1]==-1)));
-    	
+    	//Llamo al metodo de EstadoAmbiente que efectivamente mueve el lobo
     	((EstadoAmbiente)this.environmentState).moverLobo(new Posicion(fila, columna));
     }
 	

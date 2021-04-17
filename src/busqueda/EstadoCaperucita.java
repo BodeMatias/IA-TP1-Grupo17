@@ -9,22 +9,22 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
 public class EstadoCaperucita extends SearchBasedAgentState {
 	
-	private Integer cantidadDeCaramelos;
+	private int cantidadDeCaramelos;
 	private Posicion posicion;
-	private ArrayList<Posicion> posiciones_objetivo;
-	private Integer vidas;
+	//El campo de flores puede ocupar una hilera de celdas, por lo tanto debemos tener todas las posiciones
+	private ArrayList<Posicion> posicionesObjetivo;
+	private int vidas;
 	private int[][] bosqueCaperucita;
-	//TODO borrar este atributo inutil
-	private ArrayList<Camino> caminos;
 	
 	public EstadoCaperucita() {
+		//Inicializo el estado de caperucita
 		initState();
 	}
 	
-	public Integer getCantidadDeCaramelos() {
+	public int getCantidadDeCaramelos() {
 		return cantidadDeCaramelos;
 	}
-	public void setCantidadDeCaramelos(Integer cantidadDeCaramelos) {
+	public void setCantidadDeCaramelos(int cantidadDeCaramelos) {
 		this.cantidadDeCaramelos = cantidadDeCaramelos;
 	}
 	public Posicion getPosicion() {
@@ -33,17 +33,11 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
 	}
-	public Integer getVidas() {
+	public int getVidas() {
 		return vidas;
 	}
-	public void setVidas(Integer vidas) {
+	public void setVidas(int vidas) {
 		this.vidas = vidas;
-	}
-	public ArrayList<Camino> getCaminos() {
-		return caminos;
-	}
-	public void setCaminos(ArrayList<Camino> caminos) {
-		this.caminos = caminos;
 	}
 	public int[][] getBosqueCaperucita() {
 		return bosqueCaperucita;
@@ -51,9 +45,15 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	public void setBosqueCaperucita(int[][] bosqueCaperucita) {
 		this.bosqueCaperucita = bosqueCaperucita;
 	}
+	public ArrayList<Posicion> getPosicionesObjetivo() {
+		return posicionesObjetivo;
+	}
+	public void setPosicionesObjetivo(ArrayList<Posicion> posiciones_objetivo) {
+		this.posicionesObjetivo = posiciones_objetivo;
+	}
 	@Override
 	public boolean equals(Object obj) {
-		//TODO definir cuando dos estados son iguales. Por ahora solo compara posiciones y cantidad de caramelos
+		//Dos estados serán iguales si tienen la misma posición y cantidad de caramelos
 		EstadoCaperucita estadoComparado = (EstadoCaperucita) obj;
 		boolean mismaPosicion = estadoComparado.getPosicion().equals(this.posicion);
 		boolean mismaCantidadCaramelos = estadoComparado.getCantidadDeCaramelos()==(cantidadDeCaramelos);
@@ -68,15 +68,14 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		//Los atributos que son objetos (incluidos arrays) se deben clonar a mano
 		nuevoEstado.setPosicion(new Posicion(this.posicion.getFila(), this.posicion.getColumna()));
 		ArrayList<Posicion>nuevasPosicionesObjetivo = new ArrayList<>();
-		for(Posicion p : this.posiciones_objetivo) {
+		for(Posicion p : this.posicionesObjetivo) {
 			nuevasPosicionesObjetivo.add(new Posicion(p.getFila(), p.getColumna()));
 		}
-		nuevoEstado.setPosiciones_objetivo(nuevasPosicionesObjetivo);
+		nuevoEstado.setPosicionesObjetivo(nuevasPosicionesObjetivo);
 		int[][] nuevoBosque = new int[9][14];
+		//Las matrices se pasan por referencia con .clone(), pero cada una de sus filas se pasa por copia con .clone()
 		for(int i=0; i<9; i++) {
-			for(int j=0; j<14; j++) {
-				nuevoBosque[i][j]=this.bosqueCaperucita[i][j];
-			}
+			nuevoBosque[i]=this.bosqueCaperucita[i].clone();
 		}
 		nuevoEstado.setBosqueCaperucita(nuevoBosque);
 		
@@ -89,6 +88,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		int columna = this.posicion.getColumna();
 		//actualizo el camino superior
 		for(int i=0; i < caminos.get(0).size(); i++) {
+			//Si en la nueva percepcion está el lobo, tengo que sacarlo de su antigua posicion en la memoria (bosque) de caperucita
 			if(caminos.get(0).get(i)==2) {
 				this.sacarLobo();
 			}
@@ -96,6 +96,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		}
 		//actualizo el camino derecho
 		for(int i=0; i < caminos.get(1).size(); i++) {
+			//Si en la nueva percepcion está el lobo, tengo que sacarlo de su antigua posicion en la memoria (bosque) de caperucita
 			if(caminos.get(1).get(i)==2) {
 				this.sacarLobo();
 			}
@@ -103,6 +104,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		}
 		//actualizo el camino inferior
 		for(int i=0; i < caminos.get(2).size(); i++) {
+			//Si en la nueva percepcion está el lobo, tengo que sacarlo de su antigua posicion en la memoria (bosque) de caperucita
 			if(caminos.get(2).get(i)==2) {
 				this.sacarLobo();
 			}
@@ -110,6 +112,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		}
 		//actualizo el camino izquierdo
 		for(int i=0; i < caminos.get(3).size(); i++) {
+			//Si en la nueva percepcion está el lobo, tengo que sacarlo de su antigua posicion en la memoria (bosque) de caperucita
 			if(caminos.get(3).get(i)==2) {
 				this.sacarLobo();
 			}
@@ -140,23 +143,18 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	}
 	@Override
 	public void initState() {
-		// TODO Hacer esto generico
+		
 		this.bosqueCaperucita = new int[9][14];
+		//Las matrices se pasan por referencia con .clone(), pero sus filas se pasan por copia con .clone()
 		for(int i=0; i<9; i++) {
 			this.bosqueCaperucita[i]=MatrizBosque.bosque[i].clone();
 		}
 		this.vidas = 3;
-		this.posiciones_objetivo = new ArrayList<>();
+		this.posicionesObjetivo = new ArrayList<>();
 		this.cantidadDeCaramelos = 0;
-		
+		//Inicializo las variables correspondientes a las posiciones y a la matriz de bosque
 		this.inicializarPosiciones();
 		
-	}
-	public ArrayList<Posicion> getPosiciones_objetivo() {
-		return posiciones_objetivo;
-	}
-	public void setPosiciones_objetivo(ArrayList<Posicion> posiciones_objetivo) {
-		this.posiciones_objetivo = posiciones_objetivo;
 	}
 	private void sacarLobo() {
 		for(int i = 0; i<9; i++) {
@@ -173,16 +171,20 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 			for(int j=0; j<14; j++) {
 				switch(this.bosqueCaperucita[i][j]){
 				case 1:{
+					//Si encuentro un caramelo, me olvido que está ahi.
 					this.bosqueCaperucita[i][j]=0; break;
 				}
 				case 2:{
+					//Si encuentro al lobo, me olvido que está ahi.
 					this.bosqueCaperucita[i][j]=0; break;
 				}
 				case 3:{
+					//Si me encuentro a mi misma, lo guardo en la variable posicion.
 					this.posicion = new Posicion(i, j); break;
 				}
 				case 4:{
-					this.posiciones_objetivo.add(new Posicion(i,j)); break;
+					//Si encuentro los campos de flores, agrego sus posiciones al Array
+					this.posicionesObjetivo.add(new Posicion(i,j)); break;
 				}
 				}
 			}

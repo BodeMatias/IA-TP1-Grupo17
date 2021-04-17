@@ -15,6 +15,7 @@ public class IrAbajo extends SearchAction{
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
+		//Operador de busqueda
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
@@ -33,27 +34,32 @@ public class IrAbajo extends SearchAction{
 			int i = 1;
 			do {
 				celda = bosque[fila+i][columna];
-				//System.out.println("Abajo:\nFila: "+(fila+i)+"\nColumna: "+columna+"\nCelda: "+celda);
 				switch(celda) {
 					case 1: {//junto caramelo, lo saco del bosque
 						bosque[fila+i][columna]=0;
 						caramelos++;
 						break;
 					}
-					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
-						//nuevoEstado.initState();
+					case 2: {//esta el lobo, entonces pierdo una vida
 						nuevoEstado.setVidas(vidas-1);
-						//return nuevoEstado;
 					}
 				}
 				i++;
-			}while(celda != -1 && fila+i-1!=8);
+			}
+			//Se corta cuando estoy en un arbol o en el borde del mapa
+			while(celda != -1 && fila+i-1!=8);
+			
 			//termine de moverme, actualizo
-			bosque[posicion.getFila()][posicion.getColumna()]=0;
 			
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
+			
+			//Saco a caperucita de su antigua posicion
+			bosque[posicion.getFila()][posicion.getColumna()]=0;
+			
+			//Tengo que saber si corté por llegar a un arbol (true) o por llegar al borde del mapa (false)
 			posicion.setFila(celda==-1? fila+(i-2) : fila+(i-1));
 			
+			//Muevo a caperucita a su nueva posicion
 			bosque[posicion.getFila()][posicion.getColumna()]=3;
 			
 			nuevoEstado.setBosqueCaperucita(bosque);
@@ -96,6 +102,7 @@ public class IrAbajo extends SearchAction{
 					case 1: {//junto caramelo, lo saco del bosque
 						bosque[fila+i][columna]=0;
 						bosqueAm[fila+i][columna]=0;
+						//saco el caramelo de la posicion de caramelos dele stado del ambiente
 						Iterator<Posicion> iterator = posCaramelos.iterator();
 						while(iterator.hasNext()) {
 							Posicion p = iterator.next();
@@ -115,15 +122,21 @@ public class IrAbajo extends SearchAction{
 					}
 				}
 				i++;
-			}while(celda != -1 && fila+i-1!=8);
+			}
+			//Corto al llegar a un arbol o al borde del mapa
+			while(celda != -1 && fila+i-1!=8);
 			//termine de moverme, actualizo
+			
+			//Saco a caperucita de su posicion en los dos bosques
 			bosqueAm[posicion.getFila()][posicion.getColumna()]=0;
 			bosque[posicion.getFila()][posicion.getColumna()]=0;
 			
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
 			
+			//Tengo que saber si corté por llegar a un arbol (true) o al borde del mapa (flse)
 			posicion.setFila(celda==-1 ? fila+(i-2) : fila+(i-1));
 			
+			//Pongo a caperucita en su nueva posicion
 			bosque[posicion.getFila()][posicion.getColumna()]=3;
 			
 			nuevoEstado.setBosqueCaperucita(bosque);
