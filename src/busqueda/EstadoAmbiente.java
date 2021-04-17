@@ -10,7 +10,7 @@ public class EstadoAmbiente extends EnvironmentState {
 
 	private int[][] bosqueAmbiente;
 	private Posicion posicionLobo;
-	private Posicion posicionCampoFlores;
+	private ArrayList<Posicion> posicionCampoFlores;
 	private Posicion posicionCaperucita;
 	private ArrayList<Posicion> posicionCaramelos;
 	
@@ -30,10 +30,10 @@ public class EstadoAmbiente extends EnvironmentState {
 	public void setPosicionLobo(Posicion posicionLobo) {
 		this.posicionLobo = posicionLobo;
 	}
-	public Posicion getPosicionCampoFlores() {
+	public ArrayList<Posicion> getPosicionCampoFlores() {
 		return posicionCampoFlores;
 	}
-	public void setPosicionCampoFlores(Posicion posicionCampoFlores) {
+	public void setPosicionCampoFlores(ArrayList<Posicion> posicionCampoFlores) {
 		this.posicionCampoFlores = posicionCampoFlores;
 	}
 	public Posicion getPosicionCaperucita() {
@@ -55,13 +55,10 @@ public class EstadoAmbiente extends EnvironmentState {
 		for(int i=0; i<9; i++) {
 			this.bosqueAmbiente[i]=MatrizBosque.bosque[i].clone();
 		}
-		this.posicionCaperucita = new Posicion(5, 11);
-		this.posicionCampoFlores = new Posicion(7, 7);
-		this.posicionLobo = new Posicion(6, 4);
+		this.posicionCampoFlores = new ArrayList<>();
 		this.posicionCaramelos = new ArrayList<Posicion>();
-		posicionCaramelos.add(new Posicion(1, 3));
-		posicionCaramelos.add(new Posicion(1, 10));
-		posicionCaramelos.add(new Posicion(3, 8));
+		
+		inicializarPosiciones();
 	}
 	@Override
 	public String toString() {
@@ -92,5 +89,30 @@ public class EstadoAmbiente extends EnvironmentState {
 		return res;
 	}
 	
+	private void inicializarPosiciones() {
+		for(int i = 0; i<9; i++) {
+			for(int j=0; j<14; j++) {
+				switch(this.bosqueAmbiente[i][j]){
+				case 1:{
+					this.posicionCaramelos.add(new Posicion(i,j)); break;
+				}
+				case 2:{
+					this.posicionLobo = new Posicion(i, j); break;
+				}
+				case 3:{
+					this.posicionCaperucita = new Posicion(i, j); break;
+				}
+				case 4:{
+					this.posicionCampoFlores.add(new Posicion(i,j)); break;
+				}
+				}
+			}
+		}
+	}
 	
+	public void moverLobo(Posicion nuevaPosicion) {
+		this.bosqueAmbiente[posicionLobo.getFila()][this.posicionLobo.getColumna()]=0;
+		this.bosqueAmbiente[nuevaPosicion.getFila()][nuevaPosicion.getColumna()]=2;
+		this.posicionLobo = new Posicion(nuevaPosicion.getFila(), nuevaPosicion.getColumna());
+	}
 }

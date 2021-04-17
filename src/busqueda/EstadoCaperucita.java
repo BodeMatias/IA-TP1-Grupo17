@@ -11,7 +11,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	
 	private Integer cantidadDeCaramelos;
 	private Posicion posicion;
-	private Posicion posicion_objetivo;
+	private ArrayList<Posicion> posiciones_objetivo;
 	private Integer vidas;
 	private int[][] bosqueCaperucita;
 	//TODO borrar este atributo inutil
@@ -67,7 +67,11 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		nuevoEstado.setCantidadDeCaramelos(getCantidadDeCaramelos());
 		//Los atributos que son objetos (incluidos arrays) se deben clonar a mano
 		nuevoEstado.setPosicion(new Posicion(this.posicion.getFila(), this.posicion.getColumna()));
-		nuevoEstado.setPosicion_objetivo(new Posicion(this.posicion_objetivo.getFila(), this.posicion_objetivo.getColumna()));
+		ArrayList<Posicion>nuevasPosicionesObjetivo = new ArrayList<>();
+		for(Posicion p : this.posiciones_objetivo) {
+			nuevasPosicionesObjetivo.add(new Posicion(p.getFila(), p.getColumna()));
+		}
+		nuevoEstado.setPosiciones_objetivo(nuevasPosicionesObjetivo);
 		int[][] nuevoBosque = new int[9][14];
 		for(int i=0; i<9; i++) {
 			for(int j=0; j<14; j++) {
@@ -142,24 +146,44 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 			this.bosqueCaperucita[i]=MatrizBosque.bosque[i].clone();
 		}
 		this.vidas = 3;
-		this.posicion = new Posicion(5, 11);
-		this.posicion_objetivo = new Posicion(7, 7);
+		this.posiciones_objetivo = new ArrayList<>();
 		this.cantidadDeCaramelos = 0;
 		
-		this.sacarLobo();
+		this.inicializarPosiciones();
 		
 	}
-	public Posicion getPosicion_objetivo() {
-		return posicion_objetivo;
+	public ArrayList<Posicion> getPosiciones_objetivo() {
+		return posiciones_objetivo;
 	}
-	public void setPosicion_objetivo(Posicion posicion_objetivo) {
-		this.posicion_objetivo = posicion_objetivo;
+	public void setPosiciones_objetivo(ArrayList<Posicion> posiciones_objetivo) {
+		this.posiciones_objetivo = posiciones_objetivo;
 	}
 	private void sacarLobo() {
 		for(int i = 0; i<9; i++) {
 			for(int j=0; j<14; j++) {
 				if(this.bosqueCaperucita[i][j]==2) {
 					this.bosqueCaperucita[i][j]=0;
+				}
+			}
+		}
+	}
+	
+	private void inicializarPosiciones() {
+		for(int i = 0; i<9; i++) {
+			for(int j=0; j<14; j++) {
+				switch(this.bosqueCaperucita[i][j]){
+				case 1:{
+					this.bosqueCaperucita[i][j]=0; break;
+				}
+				case 2:{
+					this.bosqueCaperucita[i][j]=0; break;
+				}
+				case 3:{
+					this.posicion = new Posicion(i, j); break;
+				}
+				case 4:{
+					this.posiciones_objetivo.add(new Posicion(i,j)); break;
+				}
 				}
 			}
 		}

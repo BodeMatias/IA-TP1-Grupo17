@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 import busqueda.CaperucitaPercepcion;
 import busqueda.EstadoAmbiente;
+import busqueda.EstadoCaperucita;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
+import frsf.cidisi.faia.state.AgentState;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Ambiente extends Environment{
 	
@@ -21,6 +25,8 @@ public class Ambiente extends Environment{
 	@Override
 	public Perception getPercept() {
 		
+		moverLobo();
+		
         CaperucitaPercepcion percepcion = new CaperucitaPercepcion();
         
         int[][] bosque = ((EstadoAmbiente) this.environmentState).getBosqueAmbiente();
@@ -30,31 +36,42 @@ public class Ambiente extends Environment{
         int fila = posicionCaperucita.getFila();
         int columna = posicionCaperucita.getColumna();
         Integer celda;
-        do {
-        	celda = bosque[--fila][columna];
-        	percepcion.getCaminos().get(0).add(celda);
-        }while(celda!=-1);
+        if(fila>0) {
+        	do {
+        		celda = bosque[--fila][columna];
+        		percepcion.getCaminos().get(0).add(celda);
+        	}while(celda!=-1 && fila>0);
+        }
+        
         //Obtener camino derecha
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
-        do {
-        	celda = bosque[fila][++columna];
-        	percepcion.getCaminos().get(1).add(celda);
-        }while(celda!=-1);
+        if(columna<13) {
+        	do {
+        		celda = bosque[fila][++columna];
+        		percepcion.getCaminos().get(1).add(celda);
+        	}while(celda!=-1 && columna<13);
+        }
+        
         //Obtener camino abajo
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
-        do {
-        	celda = bosque[++fila][columna];
-        	percepcion.getCaminos().get(2).add(celda);
-        }while(celda!=-1);
+        if(fila<8) {
+        	do {
+        		celda = bosque[++fila][columna];
+        		percepcion.getCaminos().get(2).add(celda);
+        	}while(celda!=-1 && fila<8);
+        }
+        
         //Obtener camino izquierda
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
-        do {
-        	celda = bosque[fila][--columna];
-        	percepcion.getCaminos().get(3).add(celda);
-        }while(celda!=-1);
+        if(columna>0) {
+        	do {
+            	celda = bosque[fila][--columna];
+            	percepcion.getCaminos().get(3).add(celda);
+            }while(celda!=-1 && columna>0);
+        }        
         
         // Return the perception
         return percepcion;
@@ -65,9 +82,11 @@ public class Ambiente extends Environment{
 	}
 	
 	//Este método indica bajo qué condición se considera que el agente ha fallado
-    public boolean agentFailed(Action actionReturned) {
+    public boolean agentFailed(AgentState as) {
     	//TODO Resolver como hacer esto
-    	boolean failed = false;
+    	EstadoCaperucita estado = (EstadoCaperucita)as;
+    	
+    	boolean failed = estado.getVidas()==0;
 
     	//Notar que en este punto tenemos 3 posibilidades inmediatas:
     	//1 - Agregar al estado del ambiente el atributo que nos indica falla (energía)
@@ -75,6 +94,18 @@ public class Ambiente extends Environment{
     	//3 - Modificar GoalBasedAgentSimulator para que pase el AgentState en lugar de Action
 
         return failed;
+    }
+    
+    private void moverLobo() {
+    	int[][]bosque = ((EstadoAmbiente)this.environmentState).getBosqueAmbiente();
+    	int fila, columna;
+    	//Bosco una posicion valida para el lobo (Celda vacia (Dulce y campo de flores cuentan como ocupadas) y al lado de al menos 1 arbol)
+    	do {
+    		fila = ThreadLocalRandom.current().nextInt(1, 8);
+    		columna = ThreadLocalRandom.current().nextInt(1, 13);
+    	}while(!(bosque[fila][columna]==0 && (bosque[fila-1][columna]==-1 || bosque[fila+1][columna]==-1 || bosque[fila][columna-1]==-1 || bosque[fila][columna+1]==-1)));
+    	
+    	((EstadoAmbiente)this.environmentState).moverLobo(new Posicion(fila, columna));
     }
 	
 }

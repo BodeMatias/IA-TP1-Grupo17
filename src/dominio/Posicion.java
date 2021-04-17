@@ -1,6 +1,6 @@
 package dominio;
 
-public class Posicion {
+public class Posicion{
 	
 	public Integer columna;
 	public Integer fila;
@@ -26,7 +26,7 @@ public class Posicion {
 		this.fila = fila;
 	}
 	
-	public Boolean equals(Posicion posicion) {
+	public boolean equals(Posicion posicion) {
 		 return posicion.getColumna()==(columna) && posicion.getFila()==(fila);
 	}
 
