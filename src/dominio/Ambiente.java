@@ -26,12 +26,9 @@ public class Ambiente extends Environment{
 	public Perception getPercept() {
 		//El metodo obtiene la nueva posicion del lobo, luego llama al metodo dentro de EstadoAMbiente para efectivamente moverlo
 		moverLobo();
-		
-        CaperucitaPercepcion percepcion = new CaperucitaPercepcion();
-        
+        CaperucitaPercepcion percepcion = new CaperucitaPercepcion(); 
         int[][] bosque = ((EstadoAmbiente) this.environmentState).getBosqueAmbiente();
         Posicion posicionCaperucita = ((EstadoAmbiente) this.environmentState).getPosicionCaperucita();
-        
         //Obtener camino arriba
         int fila = posicionCaperucita.getFila();
         int columna = posicionCaperucita.getColumna();
@@ -46,7 +43,6 @@ public class Ambiente extends Environment{
         	//Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
         	while(celda!=-1 && fila>0);
         }
-        
         //Obtener camino derecha
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
@@ -60,7 +56,6 @@ public class Ambiente extends Environment{
             //Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
         	while(celda!=-1 && columna<13);
         }
-        
         //Obtener camino abajo
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
@@ -73,8 +68,7 @@ public class Ambiente extends Environment{
         	}
             //Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
         	while(celda!=-1 && fila<8);
-        }
-        
+        } 
         //Obtener camino izquierda
         fila = posicionCaperucita.getFila();
         columna = posicionCaperucita.getColumna();
@@ -87,8 +81,7 @@ public class Ambiente extends Environment{
             }
             //Corta cuando estoy parado en un arbol o cuando llegué al borde del mapa
         	while(celda!=-1 && columna>0);
-        }        
-        
+        }           
         // Return the perception
         return percepcion;
 	}
@@ -116,11 +109,15 @@ public class Ambiente extends Environment{
     private void moverLobo() {
     	int[][]bosque = ((EstadoAmbiente)this.environmentState).getBosqueAmbiente();
     	int fila, columna;
-    	//Bosco una posicion valida para el lobo (Celda vacia (Dulce, caperucita y campo de flores cuentan como ocupadas) y al lado de al menos 1 arbol)
+    	//Bosco una posicion valida para el lobo (Celda vacia (Dulce, caperucita y campo de flores cuentan como ocupadas)
+    	//y al lado de al menos 1 arbol)
     	do {
     		fila = ThreadLocalRandom.current().nextInt(1, 8);
     		columna = ThreadLocalRandom.current().nextInt(1, 13);
-    	}while(!(bosque[fila][columna]==0 && (bosque[fila-1][columna]==-1 || bosque[fila+1][columna]==-1 || bosque[fila][columna-1]==-1 || bosque[fila][columna+1]==-1)));
+    	}while(!(bosque[fila][columna]==0 && (bosque[fila-1][columna]==-1 
+    			|| bosque[fila+1][columna]==-1 
+    			|| bosque[fila][columna-1]==-1 
+    			|| bosque[fila][columna+1]==-1)));
     	//Llamo al metodo de EstadoAmbiente que efectivamente mueve el lobo
     	((EstadoAmbiente)this.environmentState).moverLobo(new Posicion(fila, columna));
     }
