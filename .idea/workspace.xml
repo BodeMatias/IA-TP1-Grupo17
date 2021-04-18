@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="551f7794-3aee-4231-ad11-f26702ca6327" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/ActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/ActionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/Agent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/GoalBasedAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/GoalBasedAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/NoAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/NoAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/Perception.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/Perception.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/PrologConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/PrologConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/planning/PlanningAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/planning/PlanningAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/planning/PlanningBasedAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/planning/PlanningBasedAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/planning/PlanningBasedAgentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/planning/PlanningBasedAgentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/reactive/ReactiveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/reactive/ReactiveAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/reactive/ReactiveBasedAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/reactive/ReactiveBasedAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/reactive/ReactiveBasedAgentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/reactive/ReactiveBasedAgentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/GoalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/GoalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/SearchAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/SearchAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/SearchBasedAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/SearchBasedAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/SearchBasedAgentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/search/SearchBasedAgentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/KnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/KnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/SituationCalculusAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/SituationCalculusAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/SituationCalculusBasedAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/SituationCalculusBasedAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/SituationCalculusPerception.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/agent/situationcalculus/SituationCalculusPerception.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/environment/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/environment/Environment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/environment/MatlabEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/environment/MatlabEnvironment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/LatexOutputException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/LatexOutputException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/PlanningException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/PlanningException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/PrologConnectorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/PrologConnectorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/SituationCalculusException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/exceptions/SituationCalculusException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/GoalBasedAgentSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/GoalBasedAgentSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/PlanningBasedAgentSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/PlanningBasedAgentSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/ReactiveBasedAgentSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/ReactiveBasedAgentSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/SearchBasedAgentSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/SearchBasedAgentSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/Simulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/SituationCalculusBasedAgentSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/SituationCalculusBasedAgentSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/EventType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/IterationFinishedEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/IterationFinishedEventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/SimulationFinishedEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/SimulationFinishedEventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/SimulatorEventNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/simulator/events/SimulatorEventNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/Solve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/Solve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/planning/Planning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/planning/Planning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/AStarSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/AStarSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/BreathFirstSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/BreathFirstSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/DepthFirstSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/DepthFirstSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/DummyEstimatedCostFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/DummyEstimatedCostFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/DummyStepCostFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/DummyStepCostFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/GreedySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/GreedySearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/IEstimatedCostFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/IEstimatedCostFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/IInitialCostFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/IInitialCostFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/IStepCostFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/IStepCostFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/InformedSearchStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/InformedSearchStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/NTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/NTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/Strategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/UniformCostSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/search/UniformCostSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/situationcalculus/SituationCalculus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/solver/situationcalculus/SituationCalculus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/AgentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/AgentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/EnvironmentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/EnvironmentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/MatlabEnvironmentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/MatlabEnvironmentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/DataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/DataStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Queue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Simple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/state/datastructure/Simple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/Constantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/FileOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/FileOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/GraphvizTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/GraphvizTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/LatexOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/LatexOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/TreeMLWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/faia-0.4.2/ar.edu.utn.frsf.cidisi.faia/src/frsf/cidisi/faia/util/TreeMLWriter.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1rDucQcom9wMdnL8RgLD66bBEvN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../faia-0.4.2" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bodem\Desktop\IA-TP1-Grupo17\src" />
+      <recent name="C:\Users\bodem\Desktop\IA-TP1-Grupo17" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="551f7794-3aee-4231-ad11-f26702ca6327" name="Default Changelist" comment="" />
+      <created>1618523069586</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618523069586</updated>
+      <workItem from="1618523077323" duration="270000" />
+      <workItem from="1618523366128" duration="883000" />
+      <workItem from="1618524273905" duration="44000" />
+      <workItem from="1618524333077" duration="110000" />
+      <workItem from="1618524460129" duration="75000" />
+      <workItem from="1618524550050" duration="119000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
