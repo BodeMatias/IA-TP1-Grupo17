@@ -11,14 +11,12 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
 
-public class IrAbajo extends SearchAction{
+public class IrAbajoYJuntarDulceSiHay extends SearchAction{
 	
 	Double cost=1.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
-		//Operador de busqueda
-		this.cost=1.0;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
@@ -45,9 +43,10 @@ public class IrAbajo extends SearchAction{
 						break;
 					}
 					case 2: {//esta el lobo, entonces subo el costo de este camino
-						this.cost=5.0;
+						return null;
+						/*this.cost=5.0;
 						//nuevoEstado.setVidas(vidas-1);
-						break;
+						break;*/
 					}
 					case 4: {
 						this.cost-=5.0;
@@ -124,11 +123,12 @@ public class IrAbajo extends SearchAction{
 						break;
 					}
 					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
-						nuevoEstado.initState();
+						/*nuevoEstado.initState();
 						nuevoEstado.setVidas(vidas-1);
 						nuevoEstadoAm.initState();
 						nuevoEstadoAm.setVidasCaperucita(vidas-1);
-						return nuevoEstadoAm;
+						return nuevoEstadoAm;*/
+						return null;
 					}
 				}
 				i++;
