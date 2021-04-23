@@ -17,7 +17,7 @@ public class IrDerechaPerderVida extends SearchAction{
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer vidas = nuevoEstado.getVidas();
+		int vidas = nuevoEstado.getVidas();
 		
 		//Si no puedo moverme, retorno null
 		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1) {
@@ -59,7 +59,7 @@ public class IrDerechaPerderVida extends SearchAction{
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) ast;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer vidas = nuevoEstado.getVidas();
+		int vidas = nuevoEstado.getVidas();
 		
 		//Si no puedo moverme, retorno null
 		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1) {

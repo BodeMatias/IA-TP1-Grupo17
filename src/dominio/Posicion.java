@@ -2,27 +2,27 @@ package dominio;
 
 public class Posicion{
 	
-	public Integer columna;
-	public Integer fila;
+	public int columna;
+	public int fila;
 	
-	public Posicion(Integer fila, Integer columna) {
+	public Posicion(int fila, int columna) {
 		this.columna = columna;
 		this.fila = fila;
 	}
 
-	public Integer getColumna() {
+	public int getColumna() {
 		return columna;
 	}
 
-	public void setColumna(Integer columna) {
+	public void setColumna(int columna) {
 		this.columna = columna;
 	}
 
-	public Integer getFila() {
+	public int getFila() {
 		return fila;
 	}
 
-	public void setFila(Integer fila) {
+	public void setFila(int fila) {
 		this.fila = fila;
 	}
 	

@@ -1,14 +1,10 @@
 package dominio;
 
-import java.util.ArrayList;
-
 import busqueda.CaperucitaPercepcion;
 import busqueda.EstadoAmbiente;
-import busqueda.EstadoCaperucita;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
-import frsf.cidisi.faia.state.AgentState;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -32,7 +28,7 @@ public class Ambiente extends Environment{
         //Obtener camino arriba
         int fila = posicionCaperucita.getFila();
         int columna = posicionCaperucita.getColumna();
-        Integer celda;
+        int celda;
         //Si no estoy en el borde del mapa
         if(fila>0) {
         	//"Avanzo" para ver que hay en esta direccion 

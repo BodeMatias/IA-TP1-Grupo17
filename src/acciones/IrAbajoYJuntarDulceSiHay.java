@@ -21,7 +21,7 @@ public class IrAbajoYJuntarDulceSiHay extends SearchAction{
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
+		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
 		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {
@@ -93,7 +93,7 @@ public class IrAbajoYJuntarDulceSiHay extends SearchAction{
 		ArrayList<Posicion> posCaramelos = nuevoEstadoAm.getPosicionCaramelos();
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
+		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
 		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {

@@ -19,7 +19,7 @@ public class IrDerecha extends SearchAction{
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
+		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
 		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1) {
@@ -85,8 +85,8 @@ public class IrDerecha extends SearchAction{
 		
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		//Integer vidas = nuevoEstado.getVidas();
-		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
+		//int vidas = nuevoEstado.getVidas();
+		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
 		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1) {
