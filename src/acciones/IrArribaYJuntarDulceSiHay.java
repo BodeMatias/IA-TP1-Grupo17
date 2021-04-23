@@ -40,7 +40,7 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 					case 1: {//junto caramelo, lo saco del bosque
 						bosque[fila-i][columna]=0;
 						caramelos++;
-						this.cost--;
+						//this.cost--;
 						break;
 					}
 					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
@@ -49,7 +49,7 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 						break;*/
 					}
 					case 4: {
-						this.cost-=5.0;
+						//this.cost-=5.0;
 					}
 				}
 				i++;
