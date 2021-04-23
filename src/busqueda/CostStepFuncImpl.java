@@ -1,7 +1,7 @@
 package busqueda;
 
-import acciones.IrAbajo;
-import acciones.IrArriba;
+import acciones.IrAbajoYJuntarDulceSiHay;
+import acciones.IrArribaYJuntarDulceSiHay;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.NTree;
