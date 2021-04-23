@@ -18,7 +18,7 @@ public class Heuristic implements IEstimatedCostFunction {
         Posicion posicionCaperucita = agState.getPosicion();
         Posicion posicionCampoFlores = agState.getPosicionesObjetivo().get(0);
         				
-        return Math.sqrt(Math.pow((posicionCampoFlores.fila-posicionCaperucita.fila),2)*1.0+Math.pow(posicionCampoFlores.getColumna()-posicionCaperucita.getColumna(),2)*1.0);
+        return Math.abs(posicionCampoFlores.getFila()-posicionCaperucita.getFila())*1.0+Math.abs(posicionCampoFlores.getColumna()-posicionCaperucita.getColumna())*1.0;
     }
     
 }
