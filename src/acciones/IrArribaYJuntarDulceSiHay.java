@@ -13,14 +13,14 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class IrArribaYJuntarDulceSiHay extends SearchAction{
 	
-	Double cost=1.0;
+	Double cost=2.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
+		boolean hayCaramelo=false;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer vidas = nuevoEstado.getVidas();
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
@@ -35,35 +35,46 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 			int i = 1;
 			do {
 				celda = bosque[fila-i][columna];
-				//System.out.println("Arriba:\nFila: "+(fila-i)+"\nColumna: "+columna+"\nCelda: "+celda);
 				switch(celda) {
-					case 1: {//junto caramelo, lo saco del bosque
-						bosque[fila-i][columna]=0;
+				//Junto caramelo, lo saco del bosque
+					case 1: {
+						bosque[fila+i][columna]=0;
 						caramelos++;
-						//this.cost--;
+						hayCaramelo=true;
 						break;
 					}
-					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
+				//Esta el lobo, entonces retorno null
+					case 2: {
 						return null;
-						/*this.cost=5.0;
-						break;*/
 					}
+				//Llegue al campo de flores, entonces retorno null
 					case 4: {
-						//this.cost-=5.0;
+						return null;
 					}
 				}
 				i++;
-			}while(celda != -1 && fila-(i-1)!=0);
-			//termine de moverme, actualizo
-			bosque[posicion.getFila()][posicion.getColumna()]=0;
+			}
+			//Se corta cuando estoy en un arbol o en el borde del mapa
+			while(celda != -1 && fila-(i-1)!=0);
+
+			//Si no encontre caramelos, retorno null
+			if(!hayCaramelo) {
+				return null;
+			}
 			
-			nuevoEstado.setCantidadDeCaramelos(caramelos);
+			//termine de moverme, actualizo			
+			//Saco a caperucita de su antigua posicion
+			bosque[posicion.getFila()][posicion.getColumna()]=0;
+					
+			//Debo saber si corté por llegar a un arbol (true) o al borde del mapa (false)
 			posicion.setFila(celda==-1 ? fila-(i-2) : fila-(i-1));
 			
+			//Actualizo la posicion de caperucita
 			bosque[posicion.getFila()][posicion.getColumna()]=3;
-			
-			nuevoEstado.setBosqueCaperucita(bosque);
 			nuevoEstado.setPosicion(posicion);
+			
+			nuevoEstado.setCantidadDeCaramelos(caramelos);	
+			nuevoEstado.setBosqueCaperucita(bosque);
 			return nuevoEstado;
 		}
 	}
@@ -75,15 +86,13 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
+		boolean hayCaramelo=false;
 		EstadoAmbiente nuevoEstadoAm = (EstadoAmbiente) est;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) ast;
-		
 		int[][]bosqueAm = nuevoEstadoAm.getBosqueAmbiente();
 		ArrayList<Posicion> posCaramelos = nuevoEstadoAm.getPosicionCaramelos();
-		
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		Posicion posicion = nuevoEstado.getPosicion();
-		Integer vidas = nuevoEstado.getVidas();
 		Integer caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
@@ -99,7 +108,8 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 			do {
 				celda = bosque[fila-i][columna];
 				switch(celda) {
-					case 1: {//junto caramelo, lo saco del bosque
+				//Junto caramelo, lo saco del bosque
+					case 1: {
 						bosque[fila-i][columna]=0;
 						bosqueAm[fila-i][columna]=0;
 						Iterator<Posicion> iterator = posCaramelos.iterator();
@@ -111,44 +121,53 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 							}
 						}
 						caramelos++;
+						hayCaramelo=true;
 						break;
 					}
-					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
-						/*nuevoEstado.initState();
-						nuevoEstado.setVidas(vidas-1);
-						nuevoEstadoAm.initState();
-						nuevoEstadoAm.setVidasCaperucita(vidas-1);
-						return nuevoEstadoAm;*/
+				//Esta el lobo, entonces retorno null
+					case 2: {
+						return null;
+					}
+				//Esta el campo de flores, entonces retorno null
+					case 4: {
 						return null;
 					}
 				}
 				i++;
-			}while(celda != -1 && fila-(i-1)!=0);
+			}
+			//Corto al llegar a un arbol o al borde del mapa
+			while(celda != -1 && fila-(i-1)!=0);
+			
+			//Si no encontre caramelo, retorno null
+			if(!hayCaramelo) {
+				return null;
+			}
+			
 			//termine de moverme, actualizo
+			//Saco a caperucita de su posicion en los dos bosques
 			bosqueAm[posicion.getFila()][posicion.getColumna()]=0;
 			bosque[posicion.getFila()][posicion.getColumna()]=0;
 			
-			nuevoEstado.setCantidadDeCaramelos(caramelos);
-			
+			//Tengo que saber si corté por llegar a un arbol (true) o al borde del mapa (flse)
 			posicion.setFila(celda==-1 ? fila-(i-2) : fila-(i-1));
 			
+			//Pongo a caperucita en su nueva posicion
 			bosque[posicion.getFila()][posicion.getColumna()]=3;
-			
-			nuevoEstado.setBosqueCaperucita(bosque);
 			nuevoEstado.setPosicion(posicion);
-			
 			bosqueAm[posicion.getFila()][posicion.getColumna()]=3;
 			nuevoEstadoAm.setPosicionCaperucita(new Posicion(nuevoEstado.getPosicion().getFila(), nuevoEstado.getPosicion().getColumna()));
 			
-			nuevoEstadoAm.setBosqueAmbiente(bosqueAm);
+			nuevoEstado.setCantidadDeCaramelos(caramelos);
 			nuevoEstadoAm.setPosicionCaramelos(posCaramelos);
+			nuevoEstado.setBosqueCaperucita(bosque);
+			nuevoEstadoAm.setBosqueAmbiente(bosqueAm);
 			return nuevoEstadoAm;
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "IrArriba";
+		return "IrArribaJuntarCaramelo";
 	}
 
 }
