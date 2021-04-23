@@ -16,11 +16,12 @@ public class IrAbajoPerderVida extends SearchAction{
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][]visitadas = nuevoEstado.getVisitadas();
 		Posicion posicion = nuevoEstado.getPosicion();
 		int vidas = nuevoEstado.getVidas();
 		
 		//Si no puedo moverme, retorno null
-		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {
+		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1 || visitadasMasDe5Veces(bosque, visitadas, posicion)) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
@@ -39,6 +40,7 @@ public class IrAbajoPerderVida extends SearchAction{
 						return nuevoEstado;
 					}
 				}
+				visitadas[fila+i][columna]++;
 				i++;
 			}
 			//Se corta cuando estoy en un arbol o en el borde del mapa
@@ -59,11 +61,12 @@ public class IrAbajoPerderVida extends SearchAction{
 		EstadoAmbiente nuevoEstadoAm = (EstadoAmbiente) est;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) ast;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][] visitadas = nuevoEstado.getVisitadas();
 		Posicion posicion = nuevoEstado.getPosicion();
 		int vidas = nuevoEstado.getVidas();
 		
 		//Si no puedo moverme, retorno null
-		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {
+		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1 || visitadasMasDe5Veces(bosque, visitadas, posicion)) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
@@ -84,6 +87,7 @@ public class IrAbajoPerderVida extends SearchAction{
 						return nuevoEstadoAm;
 					}
 				}
+				visitadas[fila+i][columna]++;
 				i++;
 			}
 			//Corto al llegar a un arbol o al borde del mapa
@@ -97,6 +101,21 @@ public class IrAbajoPerderVida extends SearchAction{
 	@Override
 	public String toString() {
 		return "IrAbajoPerderVida";
+	}
+	
+	private boolean visitadasMasDe5Veces(int[][] bosque, int[][] visitadas, Posicion p) {
+		int fila = p.getFila();
+		int col = p.getColumna();
+		int i=1;
+		
+		while(fila+i<=8 && bosque[fila+i][col]!=-1) {
+			if(visitadas[fila+i][col]<5) {
+				return false;
+			}
+			i++;
+		}
+		
+		return true;
 	}
 
 }

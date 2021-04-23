@@ -18,15 +18,16 @@ public class IrAbajo extends SearchAction{
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][]visitadas = nuevoEstado.getVisitadas();
 		Posicion posicion = nuevoEstado.getPosicion();
 		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {
+		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1 || visitadasMasDe5Veces(bosque, visitadas, posicion)) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
-		else {
+		else{
 			int fila = posicion.getFila();
 			int columna = posicion.getColumna();
 			int celda;
@@ -47,10 +48,16 @@ public class IrAbajo extends SearchAction{
 						return null;
 					}
 				}
+				visitadas[fila+i][columna]++;
 				i++;
 			}
 			//Se corta cuando estoy en un arbol o en el borde del mapa
 			while(celda != -1 && fila+i-1!=8);
+			
+			//Como marqué un arbol como visitado, lo desmarco
+			if(celda==-1) {
+				visitadas[fila+(i-1)][columna]--;
+			}
 			
 			//termine de moverme, actualizo
 			//Saco a caperucita de su antigua posicion
@@ -61,11 +68,12 @@ public class IrAbajo extends SearchAction{
 			
 			//Muevo a caperucita a su nueva posicion
 			bosque[posicion.getFila()][posicion.getColumna()]=3;
+			nuevoEstado.setPosicion(posicion);
 			
 			//Actualizo el nuevo estado
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
 			nuevoEstado.setBosqueCaperucita(bosque);
-			nuevoEstado.setPosicion(posicion);
+			nuevoEstado.setVisitadas(visitadas);
 			return nuevoEstado;
 		}
 	}
@@ -79,16 +87,15 @@ public class IrAbajo extends SearchAction{
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoAmbiente nuevoEstadoAm = (EstadoAmbiente) est;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) ast;
-		
 		int[][]bosqueAm = nuevoEstadoAm.getBosqueAmbiente();
 		ArrayList<Posicion> posCaramelos = nuevoEstadoAm.getPosicionCaramelos();
-		
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][] visitadas = nuevoEstado.getVisitadas();
 		Posicion posicion = nuevoEstado.getPosicion();
 		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1) {
+		if(posicion.getFila()==8 || bosque[posicion.getFila()+1][posicion.getColumna()]==-1 || visitadasMasDe5Veces(bosque, visitadas, posicion)) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
@@ -113,10 +120,16 @@ public class IrAbajo extends SearchAction{
 						return null;
 					}
 				}
+				visitadas[fila+i][columna]++;
 				i++;
 			}
 			//Corto al llegar a un arbol o al borde del mapa
 			while(celda != -1 && fila+i-1!=8);
+			
+			//Como marqué un arbol como visitado, lo desmarco
+			if(celda==-1) {
+				visitadas[fila+(i-1)][columna]--;
+			}
 			
 			//termine de moverme, actualizo
 			//Saco a caperucita de su posicion en los dos bosques
@@ -136,6 +149,7 @@ public class IrAbajo extends SearchAction{
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
 			nuevoEstadoAm.setPosicionCaramelos(posCaramelos);
 			nuevoEstado.setBosqueCaperucita(bosque);
+			nuevoEstado.setVisitadas(visitadas);
 			nuevoEstadoAm.setBosqueAmbiente(bosqueAm);
 			return nuevoEstadoAm;
 		}
@@ -146,4 +160,18 @@ public class IrAbajo extends SearchAction{
 		return "IrAbajo";
 	}
 
+	private boolean visitadasMasDe5Veces(int[][] bosque, int[][] visitadas, Posicion p) {
+		int fila = p.getFila();
+		int col = p.getColumna();
+		int i=1;
+		
+		while(fila+i<=8 && bosque[fila+i][col]!=-1) {
+			if(visitadas[fila+i][col]<5) {
+				return false;
+			}
+			i++;
+		}
+		
+		return true;
+	}
 }

@@ -15,6 +15,7 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	private ArrayList<Posicion> posicionesObjetivo;
 	private int vidas;
 	private int[][] bosqueCaperucita;
+	private int[][] visitadas;
 	
 	public EstadoCaperucita() {
 		//Inicializo el estado de caperucita
@@ -51,6 +52,14 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 	public void setPosicionesObjetivo(ArrayList<Posicion> posiciones_objetivo) {
 		this.posicionesObjetivo = posiciones_objetivo;
 	}
+	public int[][] getVisitadas() {
+		return visitadas;
+	}
+
+	public void setVisitadas(int[][] visitadas) {
+		this.visitadas = visitadas;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		//Dos estados serán iguales si tienen la misma posición y cantidad de caramelos
@@ -78,6 +87,11 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 			nuevoBosque[i]=this.bosqueCaperucita[i].clone();
 		}
 		nuevoEstado.setBosqueCaperucita(nuevoBosque);
+		int[][] nuevoVisitadas = new int[9][14];
+		for(int i=0; i<9; i++){
+			nuevoVisitadas[i]=this.visitadas[i].clone();
+		}
+		nuevoEstado.setVisitadas(nuevoVisitadas);
 		
 		return nuevoEstado;
 	}
@@ -127,6 +141,10 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		res+=MatrizBosque.imprimirMatriz(bosqueCaperucita);
 		res+="\n";
 		
+		res+="Visitadas: \n";
+		res+=MatrizBosque.imprimirMatriz(visitadas);
+		res+="\n";
+		
 		res+="Posicion: \n";
 		res+=this.posicion.toString();
 		res+="\n";
@@ -149,11 +167,17 @@ public class EstadoCaperucita extends SearchBasedAgentState {
 		for(int i=0; i<9; i++) {
 			this.bosqueCaperucita[i]=MatrizBosque.bosque[i].clone();
 		}
+
+		//Inicializo la matriz de celdas visitadas
+		this.visitadas = new int[9][14];
+		
 		this.vidas = 3;
 		this.posicionesObjetivo = new ArrayList<>();
 		this.cantidadDeCaramelos = 0;
 		//Inicializo las variables correspondientes a las posiciones y a la matriz de bosque
 		this.inicializarPosiciones();
+		
+		this.visitadas[this.posicion.getFila()][this.posicion.getColumna()]=1;
 		
 	}
 	private void sacarLobo() {
