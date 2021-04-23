@@ -119,6 +119,7 @@ public class IrIzquierda extends SearchAction{
 						nuevoEstado.initState();
 						nuevoEstado.setVidas(vidas-1);
 						nuevoEstadoAm.initState();
+						nuevoEstadoAm.setVidasCaperucita(vidas-1);
 						return nuevoEstadoAm;
 					}
 				}

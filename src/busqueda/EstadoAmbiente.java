@@ -14,6 +14,7 @@ public class EstadoAmbiente extends EnvironmentState {
 	private ArrayList<Posicion> posicionCampoFlores;
 	private Posicion posicionCaperucita;
 	private ArrayList<Posicion> posicionCaramelos;
+	private int vidasCaperucita;
 	
 	public EstadoAmbiente() {
 		//Inicializo el estado del ambiente
@@ -50,8 +51,17 @@ public class EstadoAmbiente extends EnvironmentState {
 	public void setPosicionCaramelos(ArrayList<Posicion> posicionCaramelos) {
 		this.posicionCaramelos = posicionCaramelos;
 	}
+	public int getVidasCaperucita() {
+		return vidasCaperucita;
+	}
+
+	public void setVidasCaperucita(int vidasCaperucita) {
+		this.vidasCaperucita = vidasCaperucita;
+	}
+
 	@Override
 	public void initState() {
+		this.vidasCaperucita=3;
 		this.bosqueAmbiente = new int[9][14];
 		//Las matrices se pasan por defecto como referencia con .clone(), pero sus filas se pasan por copia con .clone()
 		for(int i=0; i<9; i++) {
@@ -70,8 +80,14 @@ public class EstadoAmbiente extends EnvironmentState {
 		res+=MatrizBosque.imprimirMatriz(this.bosqueAmbiente);
 		res+="\n";
 		
+		res+="Vidas caperucita: \n";
+		res+=this.vidasCaperucita;
+		res+="\n\n";
+		
 		res+="Posicion Campo de Flores: \n";
-		res+=this.posicionCampoFlores.toString();
+		for(Posicion p : this.posicionCampoFlores) {
+			res+=p.toString();
+		}
 		res+="\n";
 		
 		res+="Posicion Lobo: \n";

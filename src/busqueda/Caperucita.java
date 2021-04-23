@@ -49,10 +49,10 @@ public class Caperucita extends SearchBasedAgent{
 
 	@Override
 	public Action selectAction() {
-		//BreathFirstSearch estrategia = new BreathFirstSearch();
+		BreathFirstSearch estrategia = new BreathFirstSearch();
 		//DepthFirstSearch estrategia = new DepthFirstSearch();
 		//GreedySearch estrategia = new GreedySearch(new Heuristic());
-		AStarSearch estrategia = new AStarSearch(new CostStepFuncImpl(), new Heuristic());
+		//AStarSearch estrategia = new AStarSearch(new CostStepFuncImpl(), new Heuristic());
 		Search solucionadorBusqueda = new Search(estrategia);
 		solucionadorBusqueda.setVisibleTree(Search.EFAIA_TREE);
 		this.setSolver(solucionadorBusqueda);

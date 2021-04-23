@@ -91,17 +91,11 @@ public class Ambiente extends Environment{
 	}
 	
 	//Este método indica bajo qué condición se considera que el agente ha fallado
-	//Nunca es invocado, no se donde se deberia invocar.
-    public boolean agentFailed(AgentState as) {
-    	//TODO Resolver como hacer esto
-    	EstadoCaperucita estado = (EstadoCaperucita)as;
-    	
-    	boolean failed = estado.getVidas()==0;
-
-    	//Notar que en este punto tenemos 3 posibilidades inmediatas:
-    	//1 - Agregar al estado del ambiente el atributo que nos indica falla (energía)
-    	//2 - Agregar un operador que se denomine "apagar" (que vendrá en "actionReturned")
-    	//3 - Modificar GoalBasedAgentSimulator para que pase el AgentState en lugar de Action
+	@Override
+    public boolean agentFailed(Action actionReturned) {
+		//Caperucita va a fallar si llega a cero vidas
+    	EstadoAmbiente estado = (EstadoAmbiente)this.getEnvironmentState();
+    	boolean failed = estado.getVidasCaperucita()==0;
 
         return failed;
     }
