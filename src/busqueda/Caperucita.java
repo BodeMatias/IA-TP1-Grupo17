@@ -13,8 +13,10 @@ import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
+import frsf.cidisi.faia.solver.search.AStarSearch;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
+import frsf.cidisi.faia.solver.search.GreedySearch;
 import frsf.cidisi.faia.solver.search.Search;
 
 public class Caperucita extends SearchBasedAgent{
@@ -30,8 +32,8 @@ public class Caperucita extends SearchBasedAgent{
 		Vector<SearchAction> operadores = new Vector<SearchAction>();
 		
 		operadores.add(new IrArriba());
-		operadores.add(new IrAbajo());
 		operadores.add(new IrIzquierda());
+		operadores.add(new IrAbajo());
 		operadores.add(new IrDerecha());
 		
 		Problem problema = new Problem(objetivo, estado, operadores);
@@ -47,7 +49,10 @@ public class Caperucita extends SearchBasedAgent{
 
 	@Override
 	public Action selectAction() {
-		BreathFirstSearch estrategia = new BreathFirstSearch();
+		//BreathFirstSearch estrategia = new BreathFirstSearch();
+		//DepthFirstSearch estrategia = new DepthFirstSearch();
+		//GreedySearch estrategia = new GreedySearch(new Heuristic());
+		AStarSearch estrategia = new AStarSearch(new CostStepFuncImpl(), new Heuristic());
 		Search solucionadorBusqueda = new Search(estrategia);
 		solucionadorBusqueda.setVisibleTree(Search.EFAIA_TREE);
 		this.setSolver(solucionadorBusqueda);

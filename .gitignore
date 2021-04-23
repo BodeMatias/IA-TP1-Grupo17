@@ -1,3 +1,7 @@
 TreeML/
 bin/
 *.class
+
+pdflatex/
+
+searchTrees/

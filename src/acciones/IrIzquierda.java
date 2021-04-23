@@ -12,6 +12,8 @@ import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 public class IrIzquierda extends SearchAction{
+	
+	Double cost=1.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
@@ -38,12 +40,18 @@ public class IrIzquierda extends SearchAction{
 					case 1: {//junto caramelo, lo saco del bosque
 						bosque[fila][columna-i]=0;
 						caramelos++;
+						this.cost--;
 						break;
 					}
 					case 2: {//esta el lobo, entonces retorno el estado inicial pero con una vida menos
 						//nuevoEstado.initState();
-						nuevoEstado.setVidas(vidas-1);
+						//nuevoEstado.setVidas(vidas-1);
 						//return nuevoEstado;
+						this.cost=5.0;
+						break;
+					}
+					case 4: {
+						this.cost-=5.0;
 					}
 				}
 				i++;
@@ -64,7 +72,7 @@ public class IrIzquierda extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 1.0;
+		return cost;
 	}
 
 	@Override
