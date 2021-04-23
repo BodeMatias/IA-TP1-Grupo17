@@ -18,11 +18,12 @@ public class IrDerecha extends SearchAction{
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][]visitadas = nuevoEstado.getVisitadas();
 		Posicion posicion = nuevoEstado.getPosicion();
 		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1) {
+		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1 || visitadasMasDe5Veces(bosque, visitadas, posicion)) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
@@ -47,10 +48,16 @@ public class IrDerecha extends SearchAction{
 						return null;
 					}
 				}
+				visitadas[fila][columna+i]++;
 				i++;
 			}
 			//Se corta cuando estoy en un arbol o en el borde del mapa
 			while(celda != -1 && columna+i-1!=13);
+			
+			//Como marqué un arbol como visitado, lo desmarco
+			if(celda==-1) {
+				visitadas[fila][columna+(i-1)]--;
+			}
 			
 			//termine de moverme, actualizo
 			//Saco a caperucita de su antigua posicion
@@ -61,11 +68,12 @@ public class IrDerecha extends SearchAction{
 
 			//Muevo a caperucita a su nueva posicion
 			bosque[posicion.getFila()][posicion.getColumna()]=3;
+			nuevoEstado.setPosicion(posicion);
 
 			//Actualizo el nuevo estado
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
 			nuevoEstado.setBosqueCaperucita(bosque);
-			nuevoEstado.setPosicion(posicion);
+			nuevoEstado.setVisitadas(visitadas);
 			return nuevoEstado;
 		}
 	}
@@ -79,17 +87,15 @@ public class IrDerecha extends SearchAction{
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoAmbiente nuevoEstadoAm = (EstadoAmbiente) est;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) ast;
-		
 		int[][]bosqueAm = nuevoEstadoAm.getBosqueAmbiente();
 		ArrayList<Posicion> posCaramelos = nuevoEstadoAm.getPosicionCaramelos();
-		
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
+		int[][] visitadas = nuevoEstado.getVisitadas();
 		Posicion posicion = nuevoEstado.getPosicion();
-		//int vidas = nuevoEstado.getVidas();
 		int caramelos = nuevoEstado.getCantidadDeCaramelos();
 		
 		//Si no puedo moverme, retorno null
-		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1) {
+		if(posicion.getColumna()==13 || bosque[posicion.getFila()][posicion.getColumna()+1]==-1 || visitadasMasDe5Veces(bosque, visitadas, posicion)) {
 		return null;	
 		} 
 		//Sino, empiezo a "mover" a caperucita, pero su estado permanece
@@ -114,13 +120,19 @@ public class IrDerecha extends SearchAction{
 						return null;
 					}
 				}
+				visitadas[fila][columna+i]++;
 				i++;
 			}while(celda != -1 && columna+i-1!=13);
+			
+			//Como marqué un arbol como visitado, lo desmarco
+			if(celda==-1) {
+				visitadas[fila][columna+(i-1)]--;
+			}
+			
 			//termine de moverme, actualizo
+			//Saco a caperucita de su posicion en los dos bosques
 			bosqueAm[posicion.getFila()][posicion.getColumna()]=0;
 			bosque[posicion.getFila()][posicion.getColumna()]=0;
-
-			nuevoEstado.setCantidadDeCaramelos(caramelos);
 
 			//Tengo que saber si corté por llegar a un arbol (true) o al borde del mapa (flse)
 			posicion.setColumna(celda==-1 ? columna+(i-2) : columna+(i-1));
@@ -135,6 +147,7 @@ public class IrDerecha extends SearchAction{
 			nuevoEstado.setCantidadDeCaramelos(caramelos);
 			nuevoEstadoAm.setPosicionCaramelos(posCaramelos);
 			nuevoEstado.setBosqueCaperucita(bosque);
+			nuevoEstado.setVisitadas(visitadas);
 			nuevoEstadoAm.setBosqueAmbiente(bosqueAm);
 			return nuevoEstadoAm;
 		}
@@ -143,6 +156,21 @@ public class IrDerecha extends SearchAction{
 	@Override
 	public String toString() {
 		return "IrDerecha";
+	}
+	
+	private boolean visitadasMasDe5Veces(int[][] bosque, int[][] visitadas, Posicion p) {
+		int fila = p.getFila();
+		int col = p.getColumna();
+		int i=1;
+		
+		while(col+i<=13 && bosque[fila][col+i]!=-1) {
+			if(visitadas[fila][col+i]<5) {
+				return false;
+			}
+			i++;
+		}
+		
+		return true;
 	}
 
 }
