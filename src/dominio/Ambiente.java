@@ -91,7 +91,7 @@ public class Ambiente extends Environment{
     public boolean agentFailed(Action actionReturned) {
 		//Caperucita va a fallar si llega a cero vidas
     	EstadoAmbiente estado = (EstadoAmbiente)this.getEnvironmentState();
-    	boolean failed = estado.getVidasCaperucita()==0 && actionReturned == null;
+    	boolean failed = estado.getVidasCaperucita()==0 || actionReturned == null;
 
         return failed;
     }
