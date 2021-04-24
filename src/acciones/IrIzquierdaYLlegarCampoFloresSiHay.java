@@ -13,10 +13,11 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class IrIzquierdaYLlegarCampoFloresSiHay extends SearchAction{
 	
-	Double cost=14.0;
+	Double cost=0.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
+		this.cost=0.0;
 		boolean hayCampo=false;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
@@ -53,6 +54,7 @@ public class IrIzquierdaYLlegarCampoFloresSiHay extends SearchAction{
 					}
 				}
 				visitadas[fila][columna-i]++;
+				this.cost++;
 				i++;
 			}
 			//Se corta cuando estoy en un arbol o en el borde del mapa
@@ -66,6 +68,7 @@ public class IrIzquierdaYLlegarCampoFloresSiHay extends SearchAction{
 			//Como marqué un arbol como visitado, lo desmarco
 			if(celda==-1) {
 				visitadas[fila][columna-(i-1)]--;
+				this.cost--;
 			}
 			
 			//termine de moverme, actualizo
@@ -181,7 +184,7 @@ public class IrIzquierdaYLlegarCampoFloresSiHay extends SearchAction{
 
 	@Override
 	public String toString() {
-		return "IrIzquierdaAlCampoDeFlores"+" Costo: "+this.getCost();
+		return "IrIzquierdaAlCampoDeFlores";
 	}
 	
 	private boolean visitadasMasDe5Veces(int[][] bosque, int[][] visitadas, Posicion p) {

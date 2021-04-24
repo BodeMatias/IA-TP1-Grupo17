@@ -12,10 +12,11 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class IrAbajo extends SearchAction{
 	
-	Double cost=14.0;
+	Double cost=0.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
+		this.cost=0.0;
 		EstadoCaperucita nuevoEstado = (EstadoCaperucita) s;
 		int[][] bosque = nuevoEstado.getBosqueCaperucita();
 		int[][]visitadas = nuevoEstado.getVisitadas();
@@ -49,6 +50,7 @@ public class IrAbajo extends SearchAction{
 					}
 				}
 				visitadas[fila+i][columna]++;
+				this.cost++;
 				i++;
 			}
 			//Se corta cuando estoy en un arbol o en el borde del mapa
@@ -57,6 +59,7 @@ public class IrAbajo extends SearchAction{
 			//Como marqué un arbol como visitado, lo desmarco
 			if(celda==-1) {
 				visitadas[fila+(i-1)][columna]--;
+				this.cost--;
 			}
 			
 			//termine de moverme, actualizo
@@ -157,7 +160,7 @@ public class IrAbajo extends SearchAction{
 
 	@Override
 	public String toString() {
-		return "IrAbajo"+" Costo: "+this.getCost();
+		return "IrAbajo";
 	}
 
 	private boolean visitadasMasDe5Veces(int[][] bosque, int[][] visitadas, Posicion p) {
