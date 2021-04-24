@@ -25,6 +25,7 @@ import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
+import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.solver.search.AStarSearch;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
@@ -33,12 +34,14 @@ import frsf.cidisi.faia.solver.search.Search;
 import frsf.cidisi.faia.solver.search.UniformCostSearch;
 
 public class Caperucita extends SearchBasedAgent{
+	
+	EstadoCaperucita estado;
 
 	public Caperucita (){
 		
 		ObjetivoCaperucita objetivo = new ObjetivoCaperucita();
 		
-		EstadoCaperucita estado = new EstadoCaperucita();
+		estado = new EstadoCaperucita();
 		
 		this.setAgentState(estado);
 		
@@ -64,7 +67,7 @@ public class Caperucita extends SearchBasedAgent{
 		operadores.add(new IrAbajoPerderVida());
 		operadores.add(new IrDerechaPerderVida());		
 		
-		Problem problema = new Problem(objetivo, estado, operadores);
+		ProblemCaperucita problema = new ProblemCaperucita(objetivo, estado, operadores);
 		
 		this.setProblem(problema);
 	}
@@ -93,5 +96,10 @@ public class Caperucita extends SearchBasedAgent{
         }
         return accion;
 	}
+	
+	/*@Override
+	public SearchBasedAgentState getAgentState() {
+		return this.estado.clone();
+	}*/
 
 }
