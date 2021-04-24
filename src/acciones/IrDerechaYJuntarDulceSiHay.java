@@ -13,7 +13,7 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class IrDerechaYJuntarDulceSiHay extends SearchAction{
 	
-	Double cost=2.0;
+	Double cost=14.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
@@ -89,7 +89,7 @@ public class IrDerechaYJuntarDulceSiHay extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return cost;
+		return cost*1.5;
 	}
 
 	@Override
@@ -183,7 +183,7 @@ public class IrDerechaYJuntarDulceSiHay extends SearchAction{
 
 	@Override
 	public String toString() {
-		return "IrDerechaJuntarCaramelo";
+		return "IrDerechaJuntarCaramelo"+" Costo: "+this.getCost();
 	}
 	
 	private boolean visitadasMasDe5Veces(int[][] bosque, int[][] visitadas, Posicion p) {
