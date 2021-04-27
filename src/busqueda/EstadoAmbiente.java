@@ -2,6 +2,7 @@ package busqueda;
 
 import java.util.ArrayList;
 
+import SpritePositions.SpritePositions;
 import auxiliar.MatrizBosque;
 import dominio.Posicion;
 import frsf.cidisi.faia.state.EnvironmentState;
@@ -132,7 +133,36 @@ public class EstadoAmbiente extends EnvironmentState {
 		}
 	}
 	
+	public EnvironmentState clone() {
+		EstadoAmbiente estadoClone = new EstadoAmbiente();
+		
+		estadoClone.setPosicionLobo(getPosicionLobo());
+		estadoClone.setPosicionCaperucita(getPosicionCaperucita());
+		estadoClone.setVidasCaperucita(getVidasCaperucita());
+		ArrayList<Posicion> clonePosicionCampoFlores = new ArrayList<Posicion>();
+		for(Posicion p : this.getPosicionCampoFlores()) {
+			clonePosicionCampoFlores.add(new Posicion(p.getFila(), p.getColumna()));
+		}
+		estadoClone.setPosicionCampoFlores(clonePosicionCampoFlores);
+		ArrayList<Posicion> clonePosicionCaramelos = new ArrayList<Posicion>();
+		for(Posicion p : this.getPosicionCaramelos()) {
+			clonePosicionCaramelos.add(new Posicion(p.getFila(), p.getColumna()));
+		}
+		estadoClone.setPosicionCaramelos(clonePosicionCaramelos);
+		
+		int[][] nuevoBosque = new int[9][14];
+		//Las matrices se pasan por referencia con .clone(), pero cada una de sus filas se pasa por copia con .clone()
+		for(int i=0; i<9; i++) {
+			nuevoBosque[i]=this.getBosqueAmbiente()[i].clone();
+		}
+		estadoClone.setBosqueAmbiente(nuevoBosque);
+		
+		return estadoClone;
+	}
+	
 	public void moverLobo(Posicion nuevaPosicion) {
+		SpritePositions spritePositions = SpritePositions.getInstance();
+		spritePositions.pushStates((EstadoAmbiente) this.clone());
 		//Marco como vacía la posicion actual del lobo
 		this.bosqueAmbiente[posicionLobo.getFila()][this.posicionLobo.getColumna()]=0;
 		//Actualizo la nueva posicion del lobo en la matriz

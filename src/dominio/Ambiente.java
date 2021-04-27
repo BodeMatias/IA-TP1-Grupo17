@@ -8,6 +8,7 @@ import frsf.cidisi.faia.environment.Environment;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class Ambiente extends Environment{
 	
 	public Ambiente () {
