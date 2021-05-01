@@ -40,7 +40,7 @@ public class IrArribaYJuntarDulceSiHay extends SearchAction{
 				switch(celda) {
 				//Junto caramelo, lo saco del bosque
 					case 1: {
-						bosque[fila+i][columna]=0;
+						bosque[fila-i][columna]=0;
 						caramelos++;
 						hayCaramelo=true;
 						break;
